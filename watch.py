@@ -11,6 +11,10 @@ auth.set_access_token(access_token, access_token_secret)
 
 api = tweepy.API(auth)
 
-public_tweets = api.home_timeline(count = 21)
+public_tweets = api.home_timeline(count = 10)
 for tweet in public_tweets:
-    print(tweet.created_at)
+
+    #Checks for tweets with links to specific websites
+    #Improve it so that it can be from general domain
+    if(len(tweet.entities['urls']) >= 1):
+        print(tweet.entities['urls'][0]['expanded_url'])
