@@ -1,4 +1,5 @@
 {
-    "keywords": [""],
-    "websites": ["twitch","youtube","twitter"]
+    "keywords": ["live"],
+    "websites": ["twitch","youtube","twitter"],
+    "media": true
 }
