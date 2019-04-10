@@ -10,19 +10,26 @@ from auth import (
 #Load in search criteria 
 with open("criteria.json", "r") as read_file:
     data = json.load(read_file)
+    print(data.items())
 
-print(data.get("keywords")[0])
+#Iterate through every key in the search criteria and call respective functions if they aren't empty   
+for key in data:
 
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
+    value = data[key]
+    print(value)
 
-api = tweepy.API(auth)
+#print(data.get("keywords")[0])
 
-public_tweets = api.home_timeline(count = 1)
+#auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+#auth.set_access_token(access_token, access_token_secret)
+
+#api = tweepy.API(auth)
+
+#public_tweets = api.home_timeline(count = 10)
 
 #for tweet in public_tweets:
 
     #Checks for tweets with links to specific websites
     #Improve it so that it can be from general domain
     #if(len(tweet.entities['urls']) >= 1):
-    #   print(tweet.entities['urls'][0]['expanded_url'])
+       #print(tweet.entities['urls'][0]['expanded_url'])
