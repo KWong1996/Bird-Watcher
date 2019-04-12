@@ -7,6 +7,8 @@ from auth import (
     access_token_secret
 )
 
+
+
 #Load in search criteria 
 with open("criteria.json", "r") as read_file:
     data = json.load(read_file)
