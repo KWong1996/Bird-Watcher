@@ -1,0 +1,5 @@
+#Ignore these folders
+__pycache__/
+
+secrets.json
+
