@@ -7,27 +7,69 @@ from auth import (
     access_token_secret
 )
 
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+
+api = tweepy.API(auth, wait_on_rate_limit=True)
+
+public_tweets = api.home_timeline(count = 20)
+
+saved_tweets = open('tweets.json', 'w')
 
 
-#Load in search criteria 
+# Search through timelines for tweets containing certain text
+def find_keywords(keywords):
+
+    for term in keywords:
+
+        for tweet in public_tweets:
+            if(term in tweet.text):
+                
+                #json_str = json.dumps(tweet._json)
+                #json.dump(json_str, saved_tweets, indent=4)
+                print(tweet)
+
+
+# Search through timelines for tweets linking to specific domains
+def find_websites(websites):
+
+    print(*websites)
+
+
+# Search through timelines for tweets containing media
+def find_media(media):
+
+    if(media == True):
+        print(True)
+
+
+# Load in search criteria 
 with open("criteria.json", "r") as read_file:
     data = json.load(read_file)
-    print(data.items())
+    #print(data.items())
 
-#Iterate through every key in the search criteria and call respective functions if they aren't empty   
+
+# Iterate through every key in the search criteria and call respective functions if they aren't empty   
 for key in data:
 
-    value = data[key]
-    print(value)
+    value = data["keywords"]
 
-#print(data.get("keywords")[0])
+    # Call text function
+    if(key == "keywords"):
+        find_keywords(data["keywords"])
 
-#auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-#auth.set_access_token(access_token, access_token_secret)
 
-#api = tweepy.API(auth)
+    # Call domain function
+    if(key == "websites"):
+        find_websites(data["websites"])
 
-#public_tweets = api.home_timeline(count = 10)
+
+    # Call media function
+    if(key == "media"):
+        find_media(data["media"])
+
+saved_tweets.close()
+
 
 #for tweet in public_tweets:
 
