@@ -7,12 +7,14 @@ from auth import (
     access_token_secret
 )
 
+
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
-public_tweets = api.home_timeline(count = 20)
+public_tweets = api.home_timeline(count = 10)
+
 
 saved_tweets = open('tweets.json', 'w')
 
@@ -25,9 +27,8 @@ def find_keywords(keywords):
         for tweet in public_tweets:
             if(term in tweet.text):
                 
-                #json_str = json.dumps(tweet._json)
-                #json.dump(json_str, saved_tweets, indent=4)
-                print(tweet)
+                json.dump(tweet._json, saved_tweets, indent=4)
+                print(tweet._json)
 
 
 # Search through timelines for tweets linking to specific domains
@@ -52,21 +53,18 @@ with open("criteria.json", "r") as read_file:
 # Iterate through every key in the search criteria and call respective functions if they aren't empty   
 for key in data:
 
-    value = data["keywords"]
-
     # Call text function
     if(key == "keywords"):
         find_keywords(data["keywords"])
-
 
     # Call domain function
     if(key == "websites"):
         find_websites(data["websites"])
 
-
     # Call media function
     if(key == "media"):
         find_media(data["media"])
+
 
 saved_tweets.close()
 

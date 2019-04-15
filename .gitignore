@@ -1,6 +1,8 @@
 #Ignore these folders
 __pycache__/
 
-secrets.json
-tweets.json
+#Ignore all files named 'secrets.json'
+secrets.json 
 
+#Ignore all files name 'tweets.json'
+tweets.json
