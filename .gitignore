@@ -4,5 +4,10 @@ __pycache__/
 #Ignore all files named 'secrets.json'
 secrets.json 
 
-#Ignore all files name 'tweets.json'
+#Ignore all files named 'tweets.json'
 tweets.json
+
+#Ignore all files named 'criteria.json'
+criteria.json 
+
+
