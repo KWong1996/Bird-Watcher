@@ -11,7 +11,7 @@ from auth import (
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 
-# 'wait_on_rate_limit' maked api call halt if request limit is reached
+# 'wait_on_rate_limit' makes api call halt if request limit is reached
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
 # Count parameter determines how many tweets in home timeline to searc through
