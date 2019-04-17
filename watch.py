@@ -8,19 +8,21 @@ from auth import (
     access_token_secret
 )
 
-
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 
+# 'wait_on_rate_limit' maked api call halt if request limit is reached
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
+# Count parameter determines how many tweets in home timeline to searc through
 public_tweets = api.home_timeline(count = 20)
 
+# Create file name based on current date and time
 filename = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+saved_tweets = open(filename+'.json', 'a+')
 
 all_tweets = {}
 
-saved_tweets = open(filename+'.json', 'a+')
 
 # Search through timelines for tweets containing certain text
 def find_keywords(keywords):
