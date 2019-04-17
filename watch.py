@@ -18,8 +18,6 @@ public_tweets = api.home_timeline(count = 20)
 
 all_tweets = {}
 
-tweets = []
-
 saved_tweets = open('tweets.json', 'a+')
 
 # Search through timelines for tweets containing certain text
@@ -89,8 +87,5 @@ for key in data:
 
 
 json.dump(all_tweets, saved_tweets, indent=4)
-
-# Print staement to check how many tweets have matched search criteria
-#print(len(tweets))
 
 saved_tweets.close()
