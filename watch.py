@@ -34,6 +34,18 @@ def find_keywords(keywords):
 # Search through timelines for tweets linking to specific domains
 def find_websites(websites):
     
+    for term in websites:
+
+        for tweet in public_tweets:
+            
+            value = tweet.entities['urls'][0].get('expanded_url')
+
+            if value != None:
+                print(tweet.entities['urls'][0]['expanded_url'])
+
+            # Check expanded_url to see if it links to desired website
+            #if tweet.entities['urls'][0]['expanded_url']
+
     print(*websites)
 
 
@@ -54,7 +66,6 @@ def find_media(media):
 # Load in search criteria 
 with open("criteria.json", "r") as read_file:
     data = json.load(read_file)
-    #print(data.items())
 
 
 # Iterate through every key in the search criteria and call respective functions if they aren't empty   
