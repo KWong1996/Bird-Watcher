@@ -16,24 +16,30 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 public_tweets = api.home_timeline(count = 20)
 
 
+all_tweets = {}
+
 tweets = []
 
-saved_tweets = open('tweets.json', 'w')
+saved_tweets = open('tweets.json', 'a+')
 
 # Search through timelines for tweets containing certain text
 def find_keywords(keywords):
+
+    all_tweets['Keywords'] = []
 
     for term in keywords:
 
         for tweet in public_tweets:
 
             if(term in tweet.text):
-                tweets.append(tweet._json)
+                all_tweets['Keywords'].append(tweet._json)
 
 
 # Search through timelines for tweets linking to specific domains
 def find_websites(websites):
     
+    all_tweets['Websites'] = []
+
     for term in websites:
 
         for tweet in public_tweets:
@@ -42,11 +48,13 @@ def find_websites(websites):
             if(len(tweet.entities['urls']) >= 1):
 
                 if term in tweet.entities['urls'][0]['expanded_url']:
-                    tweets.append(tweet._json)
+                    all_tweets['Websites'].append(tweet._json)
 
 
 # Search through timelines for tweets containing media
 def find_media(media):
+
+    all_tweets['Media'] = []
 
     if media == True:
 
@@ -56,7 +64,7 @@ def find_media(media):
             value = tweet.entities.get('media')
 
             if value != None:
-                tweets.append(tweet._json)
+                all_tweets['Media'].append(tweet._json)
 
 
 # Load in search criteria 
@@ -72,15 +80,15 @@ for key in data:
         find_keywords(data["keywords"])
 
     # Call domain function
-    if(key == "websites"):
+    elif(key == "websites"):
         find_websites(data["websites"])
 
     # Call media function
-    if(key == "media"):
+    elif(key == "media"):
         find_media(data["media"])
 
 
-json.dump(tweets, saved_tweets, indent=4)
+json.dump(all_tweets, saved_tweets, indent=4)
 
 # Print staement to check how many tweets have matched search criteria
 #print(len(tweets))
