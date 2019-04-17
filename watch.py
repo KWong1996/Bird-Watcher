@@ -1,5 +1,6 @@
 import tweepy
 import json
+import datetime
 from auth import (
     consumer_key,
     consumer_secret,
@@ -15,10 +16,11 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 
 public_tweets = api.home_timeline(count = 20)
 
+filename = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 
 all_tweets = {}
 
-saved_tweets = open('tweets.json', 'a+')
+saved_tweets = open(filename+'.json', 'a+')
 
 # Search through timelines for tweets containing certain text
 def find_keywords(keywords):
