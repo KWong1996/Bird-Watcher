@@ -1,6 +1,6 @@
 # How to use
 
-### When run, the script will search through your home timeline for certain tweets mathcing your search criteria. Once all relevant tweets are found, they are then exported to a JSON file named after the date and time the script was executed. Within the script, you can customize how many tweets to read from your timeline at a time through the 'count' variable within 'watch.py'. Twitter limits users to 15 requests per hour. The script will sleep and wait if the limit is reached and try to run until the limit is reset again.
+### When ran, the script will search through your home timeline for certain tweets mathcing your search criteria. Once all relevant tweets are found, they are then exported to a JSON file named after the date and time the script was executed. Within the script, you can customize how many tweets to read from your timeline at a time through the 'count' variable within 'watch.py'. Twitter limits users to 15 requests per hour. The script will sleep and wait if the limit is reached and try to run until the limit is reset again.
 
 ## secrets.json
 
