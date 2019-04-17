@@ -21,7 +21,7 @@
 ```shell
 {
     "keywords": ["python","tweepy"],
-    "websites": ["twitter","youtube"],
+    "websites": ["twitter.com","youtube.com"],
     "media": true
 }
 ```

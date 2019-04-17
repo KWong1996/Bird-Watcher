@@ -37,16 +37,12 @@ def find_websites(websites):
     for term in websites:
 
         for tweet in public_tweets:
-            
-            value = tweet.entities['urls'][0].get('expanded_url')
 
-            if value != None:
-                print(tweet.entities['urls'][0]['expanded_url'])
+            #check size of 'urls' to see if it is non-empty
+            if(len(tweet.entities['urls']) >= 1):
 
-            # Check expanded_url to see if it links to desired website
-            #if tweet.entities['urls'][0]['expanded_url']
-
-    print(*websites)
+                if term in tweet.entities['urls'][0]['expanded_url']:
+                    tweets.append(tweet._json)
 
 
 # Search through timelines for tweets containing media
@@ -86,14 +82,7 @@ for key in data:
 
 json.dump(tweets, saved_tweets, indent=4)
 
-print(len(tweets))
+# Print staement to check how many tweets have matched search criteria
+#print(len(tweets))
 
 saved_tweets.close()
-
-
-#for tweet in public_tweets:
-
-    #Checks for tweets with links to specific websites
-    #Improve it so that it can be from general domain
-    #if(len(tweet.entities['urls']) >= 1):
-       #print(tweet.entities['urls'][0]['expanded_url'])
