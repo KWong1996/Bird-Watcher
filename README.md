@@ -1,10 +1,10 @@
 # How to use
 
-### When ran, the script will search through your home timeline for certain tweets matching your search criteria. Once all relevant tweets are found, they are then exported to a JSON file named after the date and time the script was executed. Within the script, you can customize how many tweets to read from your timeline at a time through the 'count' variable within 'watch.py'. Twitter limits users to 15 requests per hour. The script will sleep and wait if the limit is reached and try to run until the limit is reset again.
+When ran, the script will search through your Twitter home timeline for certain tweets matching your search criteria. Once all relevant tweets are found, they are then exported to a JSON file named after the date and time the script was executed. Within the script, you can customize how many tweets to read from your timeline at a time through the 'count' variable within 'watch.py'. Twitter limits users to 15 requests per hour. The script will sleep and wait if the limit is reached and try to run until the limit is reset again.
 
 ## secrets.json
 
-### On your local directory create a file called "secrets.json" with the following format containing your twitter API access keys
+On your local directory create a file called "secrets.json" with the following format containing your twitter API access keys
 
 ```shell
 {
@@ -17,7 +17,7 @@
 
 ## criteria.json
 
-### Within the 'criteria.json' file, input any specific tweets that you would like to search for. Currently, the script can search your timeline for tweets with certain keywords, tweets linking to specific domains, or if the tweet contains any media
+Within the 'criteria.json' file, input any specific tweets that you would like to search for. Currently, the script can search your timeline for tweets with certain keywords, tweets linking to specific domains, or if the tweet contains any media
 
 ### Example:
 ```shell
