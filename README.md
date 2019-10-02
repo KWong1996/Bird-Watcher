@@ -23,7 +23,7 @@ Within the 'criteria.json' file, input any specific tweets that you would like t
 ```shell
 {
     "keywords": ["python","tweepy"],
-    "websites": ["twitter.com","youtube.com"],
+    "websites": ["twitter.com","github.com"],
     "media": true
 }
 ```
